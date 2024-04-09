@@ -75,6 +75,7 @@ def SubmitPage():
     # upload image of the item
     
     uploaded_file = st.file_uploader("Choose an image of the item. JPG and PNG format only.", type=["jpg", "jpeg", "png"])
+    item_image_str = ""
     if uploaded_file is not None:
         st.write("Image Uploaded Successfully!")
         
@@ -88,8 +89,7 @@ def SubmitPage():
         base64_encoded = base64.b64encode(image_bytes)
         # Convert to string for easier handling
         item_image_str = base64_encoded.decode('utf-8')
-    else:
-        item_image_str = ""
+        # st.write(f"This is {item_image_str}")
 
     # Description input
     description = st.text_area("Description")
