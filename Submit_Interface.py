@@ -110,6 +110,7 @@ def SubmitPage():
         st.image(image, caption='Uploaded Image.', use_column_width=True)
 
         # Read the image as bytes
+        uploaded_file.seek(0)
         image_bytes = uploaded_file.read()
         st.write(image_bytes)
         # Encode these bytes to Base64
