@@ -115,7 +115,7 @@ def SubmitPage():
         base64_encoded = base64.b64encode(image_bytes)
         # Convert to string for easier handling
         item_image_str = base64_encoded.decode('utf-8')
-        # st.write(f"This is {item_image_str}")
+        st.write(f"This is {item_image_str}")
 
 
     # Contact information
