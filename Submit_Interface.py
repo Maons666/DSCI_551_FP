@@ -72,25 +72,6 @@ def SubmitPage():
     if color == 'Other':
         color = st.text_input("Specify color...")
 
-    # upload image of the item
-    
-    uploaded_file = st.file_uploader("Choose an image of the item. JPG and PNG format only.", type=["jpg", "jpeg", "png"])
-    item_image_str = ""
-    if uploaded_file is not None:
-        st.write("Image Uploaded Successfully!")
-        
-        # Display the image
-        image = Image.open(uploaded_file)
-        st.image(image, caption='Uploaded Image.', use_column_width=True)
-
-        # Read the image as bytes
-        image_bytes = uploaded_file.read()
-        # Encode these bytes to Base64
-        base64_encoded = base64.b64encode(image_bytes)
-        # Convert to string for easier handling
-        item_image_str = base64_encoded.decode('utf-8')
-        # st.write(f"This is {item_image_str}")
-
     # Description input
     description = st.text_area("Description")
 
@@ -117,6 +98,25 @@ def SubmitPage():
         lon = 0
         st.write("Waiting for location selection...")
         st.write("Will not record location if not selected.")
+
+    # upload image of the item
+    uploaded_file = st.file_uploader("Choose an image of the item. JPG and PNG format only.", type=["jpg", "jpeg", "png"])
+    item_image_str = ""
+    if uploaded_file is not None:
+        st.write("Image Uploaded Successfully!")
+        
+        # Display the image
+        image = Image.open(uploaded_file)
+        st.image(image, caption='Uploaded Image.', use_column_width=True)
+
+        # Read the image as bytes
+        image_bytes = uploaded_file.read()
+        # Encode these bytes to Base64
+        base64_encoded = base64.b64encode(image_bytes)
+        # Convert to string for easier handling
+        item_image_str = base64_encoded.decode('utf-8')
+        # st.write(f"This is {item_image_str}")
+
 
     # Contact information
     phone = st.text_input("Phone Number")
