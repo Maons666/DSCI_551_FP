@@ -112,13 +112,10 @@ def SubmitPage():
         # Read the image as bytes
         uploaded_file.seek(0)
         image_bytes = uploaded_file.read()
-        st.write(image_bytes)
         # Encode these bytes to Base64
         base64_encoded = base64.b64encode(image_bytes)
-        st.write(base64_encoded)
         # Convert to string for easier handling
         item_image_str = base64_encoded.decode('utf-8')
-        st.write(f"This is {item_image_str}")
 
 
     # Contact information
