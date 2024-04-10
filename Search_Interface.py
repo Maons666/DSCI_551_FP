@@ -68,7 +68,7 @@ def SearchPage():
             item_Cate = st.text_input("Specify item type...")
         search_param = f'?orderBy="item_type"&equalTo="{item_Cate}"'
         search_url = []
-        for url in DATABASE_URLS:
+        for key, url in DATABASE_URLS.items():
             search_url.append(f"{url}{search_param}")
 
     elif filter_select == 'Date':
@@ -78,7 +78,7 @@ def SearchPage():
         date_end_inclusive = datetime.combine(date_end, datetime.max.time()).timestamp()
         search_param = f'?orderBy="date"&startAt="{date_start_inclusive}"&endAt="{date_end_inclusive}"'
         search_url = []
-        for url in DATABASE_URLS:
+        for key, url in DATABASE_URLS.items():
             search_url.append(f"{url}{search_param}")
 
     elif filter_select == "Location":
@@ -101,7 +101,7 @@ def SearchPage():
         search_url["bound"] = calculate_square_bounds(lat, lon)
         search_url["urls"] = []
         search_param = f'?orderBy="latitude"&startAt="{search_url["bound"][0]}"&endAt="{search_url["bound"][1]}"'
-        for url in DATABASE_URLS:
+        for key, url in DATABASE_URLS.items():
             search_url["urls"].append(f"{url}{search_param}")
 
 # ---------------------------------------------------------------------
