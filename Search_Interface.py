@@ -145,7 +145,7 @@ def SearchPage():
             results.update(response.json() or {})
         st.markdown("---")
         if results:
-            for result in results:
+            for result in results: # here
                 with st.container():
                     col1, col2 = st.columns([1, 2])
                     if result["image"] == "":
@@ -157,18 +157,17 @@ def SearchPage():
                         image_data = BytesIO(image_bytes)
                         st.image(image_data)
                     with col2:
-                        st.write(f"Status:         {handle_Empty(result.get('status'))}")
-                        st.write(f"Type:           {handle_Empty(result.get('item_type'))}")
-                        st.write(f"Color:          {handle_Empty(result.get('color'))}")
-                        if result["date"]:
-                            date_from_stamp = datetime.fromtimestamp(result["date"]).strftime('%Y-%m-%d %H:%M:%S')
+                        st.write(f"Status:         {handle_Empty(results.get('status'))}")
+                        st.write(f"Type:           {handle_Empty(results.get('item_type'))}")
+                        st.write(f"Color:          {handle_Empty(results.get('color'))}")
+                        if results["date"]:
+                            date_from_stamp = datetime.fromtimestamp(results["date"]).strftime('%Y-%m-%d %H:%M:%S')
                         else:
-                            date_from_stamp = "-----"
+                            date_from_stamp = "N/A"
                         st.write(f"Date submitted：{date_from_stamp}")
-                        contact_info = result["contact"]
-                        st.write(f"Email:          {handle_Empty(contact_info.get('email'))}")
-                        st.write(f"Phone:          {handle_Empty(contact_info.get('phone'))}")
-                        st.write(f"Description: {handle_Empty(result.get('description'))}")
+                        st.write(f"Email:          {handle_Empty(results.get('email'))}")
+                        st.write(f"Phone:          {handle_Empty(results.get('phone'))}")
+                        st.write(f"Description: {handle_Empty(results.get('description'))}")
                     st.markdown("---")
     elif search_button and isinstance(search_url, dict) and filter_select == "Location":
         results = {}
@@ -177,7 +176,7 @@ def SearchPage():
             results.update(response.json() or {})
         st.markdown("---")
         if results:
-            for result in results:
+            for result in results: # here
                 if result['Longitude'] >= search_url["bound"][2] and\
                 result['Longitude'] <= search_url["bound"][3]:
                     with st.container():
@@ -191,18 +190,17 @@ def SearchPage():
                             image_data = BytesIO(image_bytes)
                             st.image(image_data)
                         with col2:
-                            st.write(f"Status:         {handle_Empty(result.get('status'))}")
-                            st.write(f"Type:           {handle_Empty(result.get('item_type'))}")
-                            st.write(f"Color:          {handle_Empty(result.get('color'))}")
-                            if result["date"]:
-                                date_from_stamp = datetime.fromtimestamp(result["date"]).strftime('%Y-%m-%d %H:%M:%S')
+                            st.write(f"Status:         {handle_Empty(results.get('status'))}")
+                            st.write(f"Type:           {handle_Empty(results.get('item_type'))}")
+                            st.write(f"Color:          {handle_Empty(results.get('color'))}")
+                            if results["date"]:
+                                date_from_stamp = datetime.fromtimestamp(results["date"]).strftime('%Y-%m-%d %H:%M:%S')
                             else:
-                                date_from_stamp = "-----"
+                                date_from_stamp = "N/A"
                             st.write(f"Date submitted：{date_from_stamp}")
-                            contact_info = result["contact"]
-                            st.write(f"Email:          {handle_Empty(contact_info.get('email'))}")
-                            st.write(f"Phone:          {handle_Empty(contact_info.get('phone'))}")
-                            st.write(f"Description: {handle_Empty(result.get('description'))}")
+                            st.write(f"Email:          {handle_Empty(results.get('email'))}")
+                            st.write(f"Phone:          {handle_Empty(results.get('phone'))}")
+                            st.write(f"Description: {handle_Empty(results.get('description'))}")
                         st.markdown("---")
 
 
