@@ -66,7 +66,7 @@ def SearchPage():
         item_Cate = st.selectbox("Item Category", item_type_options, key = "Item_type")
         if item_Cate == 'Other':
             item_Cate = st.text_input("Specify item type...")
-        search_param = f'?orderBy="item_type"&equalTo="{item_Cate}"'
+        search_param = f'.json?orderBy="item_type"&equalTo="{item_Cate}"'
         search_url = []
         for key, url in DATABASE_URLS.items():
             search_url.append(f"{url}{search_param}")
@@ -76,7 +76,7 @@ def SearchPage():
         date_end = st.date_input("End date", key = "End_Date", value = date.today())
         date_start_inclusive = datetime.combine(date_start, datetime.min.time()).timestamp()
         date_end_inclusive = datetime.combine(date_end, datetime.max.time()).timestamp()
-        search_param = f'?orderBy="date"&startAt="{date_start_inclusive}"&endAt="{date_end_inclusive}"'
+        search_param = f'.json?orderBy="date"&startAt="{date_start_inclusive}"&endAt="{date_end_inclusive}"'
         search_url = []
         for key, url in DATABASE_URLS.items():
             search_url.append(f"{url}{search_param}")
@@ -100,7 +100,7 @@ def SearchPage():
             st.write("Waiting for location selection...")
         search_url["bound"] = calculate_square_bounds(lat, lon)
         search_url["urls"] = []
-        search_param = f'?orderBy="latitude"&startAt="{search_url["bound"][0]}"&endAt="{search_url["bound"][1]}"'
+        search_param = f'.json?orderBy="latitude"&startAt="{search_url["bound"][0]}"&endAt="{search_url["bound"][1]}"'
         for key, url in DATABASE_URLS.items():
             search_url["urls"].append(f"{url}{search_param}")
 
