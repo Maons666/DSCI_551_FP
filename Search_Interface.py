@@ -142,7 +142,7 @@ def SearchPage():
         results = {}
         for url in search_url:
             response = requests.get(url)
-            results = results.update(response.json() or {})
+            results.update(response.json() or {})
         st.markdown("---")
         if results:
             for result in results:
@@ -174,7 +174,7 @@ def SearchPage():
         results = {}
         for url in search_url["urls"]:
             response = requests.get(url)
-            results = results.update(response.json() or {})
+            results.update(response.json() or {})
         st.markdown("---")
         if results:
             for result in results:
