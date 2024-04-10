@@ -139,7 +139,7 @@ def SearchPage():
             st.write("No such ID found in database...")
     elif search_button and isinstance(search_url, list) and not filter_select == "Location":
         results = {}
-        for url in search_url["urls"]:
+        for url in search_url:
             response = requests.get(url)
             results = results.update(response.json() or {})
         st.markdown("---")
