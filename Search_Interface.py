@@ -145,7 +145,7 @@ def SearchPage():
             results.update(response.json() or {})
         st.markdown("---")
         if results:
-            for result in results: # here
+            for resultKey, result in results.items(): 
                 with st.container():
                     col1, col2 = st.columns([1, 2])
                     if result["image"] == "":
@@ -176,7 +176,7 @@ def SearchPage():
             results.update(response.json() or {})
         st.markdown("---")
         if results:
-            for result in results: # here
+            for resultKey, result in results.items(): 
                 if result['Longitude'] >= search_url["bound"][2] and\
                 result['Longitude'] <= search_url["bound"][3]:
                     with st.container():
