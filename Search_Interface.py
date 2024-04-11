@@ -15,6 +15,12 @@ DATABASE_URLS = {
     2: "https://resolved-items-default-rtdb.firebaseio.com/items"
 }
 
+# DATABASE_URLS = {
+#     0: "https://dsci551-hw1-db1-6491a-default-rtdb.firebaseio.com/items",
+#     1: "https://dsci551-hw1-db2-54c48-default-rtdb.firebaseio.com/items",
+#     2: "https://dsci-551-xinyu-wang-default-rtdb.asia-southeast1.firebasedatabase.app/items"
+# }
+
 NOIMAGE = "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"
 
 def calculate_square_bounds(lat, lon, side_meters=200):
@@ -136,7 +142,6 @@ def SearchPage():
         else:
             st.write("No such ID found in database...")
     elif search_button and isinstance(search_url, list) and not filter_select == "Location":
-        st.write(search_url)
         results = {}
         for url in search_url:
             response = requests.get(url)
@@ -155,17 +160,17 @@ def SearchPage():
                         image_data = BytesIO(image_bytes)
                         st.image(image_data)
                     with col2:
-                        st.write(f"Status:         {handle_Empty(results.get('status'))}")
-                        st.write(f"Type:           {handle_Empty(results.get('item_type'))}")
-                        st.write(f"Color:          {handle_Empty(results.get('color'))}")
-                        if results["date"]:
-                            date_from_stamp = datetime.fromtimestamp(results["date"]).strftime('%Y-%m-%d %H:%M:%S')
+                        st.write(f"Status:         {handle_Empty(result.get('status'))}")
+                        st.write(f"Type:           {handle_Empty(result.get('item_type'))}")
+                        st.write(f"Color:          {handle_Empty(result.get('color'))}")
+                        if result["date"]:
+                            date_from_stamp = datetime.fromtimestamp(result["date"]).strftime('%Y-%m-%d %H:%M:%S')
                         else:
                             date_from_stamp = "N/A"
                         st.write(f"Date submitted：{date_from_stamp}")
-                        st.write(f"Email:          {handle_Empty(results.get('email'))}")
-                        st.write(f"Phone:          {handle_Empty(results.get('phone'))}")
-                        st.write(f"Description: {handle_Empty(results.get('description'))}")
+                        st.write(f"Email:          {handle_Empty(result.get('email'))}")
+                        st.write(f"Phone:          {handle_Empty(result.get('phone'))}")
+                        st.write(f"Description: {handle_Empty(result.get('description'))}")
                     st.markdown("---")
     elif search_button and isinstance(search_url, dict) and filter_select == "Location":
         results = {}
@@ -188,17 +193,17 @@ def SearchPage():
                             image_data = BytesIO(image_bytes)
                             st.image(image_data)
                         with col2:
-                            st.write(f"Status:         {handle_Empty(results.get('status'))}")
-                            st.write(f"Type:           {handle_Empty(results.get('item_type'))}")
-                            st.write(f"Color:          {handle_Empty(results.get('color'))}")
-                            if results["date"]:
-                                date_from_stamp = datetime.fromtimestamp(results["date"]).strftime('%Y-%m-%d %H:%M:%S')
+                            st.write(f"Status:         {handle_Empty(result.get('status'))}")
+                            st.write(f"Type:           {handle_Empty(result.get('item_type'))}")
+                            st.write(f"Color:          {handle_Empty(result.get('color'))}")
+                            if result["date"]:
+                                date_from_stamp = datetime.fromtimestamp(result["date"]).strftime('%Y-%m-%d %H:%M:%S')
                             else:
                                 date_from_stamp = "N/A"
                             st.write(f"Date submitted：{date_from_stamp}")
-                            st.write(f"Email:          {handle_Empty(results.get('email'))}")
-                            st.write(f"Phone:          {handle_Empty(results.get('phone'))}")
-                            st.write(f"Description: {handle_Empty(results.get('description'))}")
+                            st.write(f"Email:          {handle_Empty(result.get('email'))}")
+                            st.write(f"Phone:          {handle_Empty(result.get('phone'))}")
+                            st.write(f"Description: {handle_Empty(result.get('description'))}")
                         st.markdown("---")
 
 

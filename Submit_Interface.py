@@ -15,7 +15,13 @@ DATABASE_URLS = {
     0: "https://lost-items-f914d-default-rtdb.firebaseio.com/items",
     1: "https://found-items-7dec3-default-rtdb.firebaseio.com/items",
     2: "https://resolved-items-default-rtdb.firebaseio.com/items"
-    }
+}
+
+# DATABASE_URLS = {
+#     0: "https://dsci551-hw1-db1-6491a-default-rtdb.firebaseio.com/items",
+#     1: "https://dsci551-hw1-db2-54c48-default-rtdb.firebaseio.com/items",
+#     2: "https://dsci-551-xinyu-wang-default-rtdb.asia-southeast1.firebasedatabase.app/items"
+# }
 
 def randomChar(l):
     dicR = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
