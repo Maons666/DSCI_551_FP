@@ -76,11 +76,11 @@ def SearchPage():
             search_url.append(f"{url}{search_param}")
 
     elif filter_select == 'Date':
-        date_start = st.date_input("Start date", key = "Start_Date", value = date.today())
-        date_end = st.date_input("End date", key = "End_Date", value = date.today())
+        date_start = st.date_input("Start date")
+        date_end = st.date_input("End date")#, value = date.today()
         date_start_inclusive = datetime.combine(date_start, datetime.min.time()).timestamp()
         date_end_inclusive = datetime.combine(date_end, datetime.max.time()).timestamp()
-        search_param = f'.json?orderBy="date"&startAt="{date_start_inclusive}"&endAt="{date_end_inclusive}"'
+        search_param = f'.json?orderBy="date"&startAt={date_start_inclusive}&endAt={date_end_inclusive}'
         search_url = []
         for key, url in DATABASE_URLS.items():
             search_url.append(f"{url}{search_param}")
@@ -102,9 +102,10 @@ def SearchPage():
             lat = 0
             lon = 0
             st.write("Waiting for location selection...")
+        search_url = {}
         search_url["bound"] = calculate_square_bounds(lat, lon)
         search_url["urls"] = []
-        search_param = f'.json?orderBy="latitude"&startAt="{search_url["bound"][0]}"&endAt="{search_url["bound"][1]}"'
+        search_param = f'.json?orderBy="latitude"&startAt={search_url["bound"][0]}&endAt={search_url["bound"][1]}'
         for key, url in DATABASE_URLS.items():
             search_url["urls"].append(f"{url}{search_param}")
 
@@ -180,8 +181,8 @@ def SearchPage():
         st.markdown("---")
         if results:
             for resultKey, result in results.items(): 
-                if result['Longitude'] >= search_url["bound"][2] and\
-                result['Longitude'] <= search_url["bound"][3]:
+                if result['longitude'] >= search_url["bound"][2] and\
+                result['longitude'] <= search_url["bound"][3]:
                     with st.container():
                         col1, col2 = st.columns([1, 2])
                         if result["image"] == "":
