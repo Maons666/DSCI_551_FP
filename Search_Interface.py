@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import json
 import math
 import folium
 import base64
@@ -51,7 +52,7 @@ def SearchPage():
             index = 0
         else:
             index = 1
-        search_url = f"{DATABASE_URLS[index]}/{item_id}.json?"
+        search_url = {"url": f"{DATABASE_URLS[index]}/{item_id}.json?", "id": item_id}
     elif filter_select == 'Type':
         item_type_options = [
             'Electronic Devices', 
@@ -113,7 +114,7 @@ def SearchPage():
     search_button = st.button('Search')
 
     if search_button and filter_select == "ID":
-        response = requests.get(search_url)
+        response = requests.get(search_url["url"])
         results = response.json()
         st.markdown("---")
         if results:
@@ -127,6 +128,11 @@ def SearchPage():
                     image_bytes = base64.b64decode(base64_string)
                     image_data = BytesIO(image_bytes)
                     st.image(image_data)
+                    if st.button("Mark as resolved!"):
+                        results["completed"] = True
+                        responseD = requests.delete(search_url["url"])
+                        responseA = requests.patch(f"{DATABASE_URLS[2]}/{search_url["id"]}.json", data=json.dumps(results))
+                        st.success("Congratulations! Item has been resolved!")
                 with col2:
                     st.write(f"Status:         {handle_Empty(results.get('status'))}")
                     st.write(f"Type:           {handle_Empty(results.get('item_type'))}")
