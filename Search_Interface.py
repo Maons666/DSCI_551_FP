@@ -129,10 +129,13 @@ def SearchPage():
                     image_data = BytesIO(image_bytes)
                     st.image(image_data)
                     if st.button("Mark as resolved!"):
+                        st.write(results)
                         results["completed"] = True
                         responseD = requests.delete(search_url["url"])
                         dataurl = DATABASE_URLS[2]
                         dataid = search_url["id"]
+                        st.write(results)
+                        st.write(f"{dataurl}/{dataid}.json")
                         responseA = requests.patch(f"{dataurl}/{dataid}.json", data=json.dumps(results))
                         st.success("Congratulations! Item has been resolved!")
                 with col2:
