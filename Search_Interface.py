@@ -131,7 +131,9 @@ def SearchPage():
                     if st.button("Mark as resolved!"):
                         results["completed"] = True
                         responseD = requests.delete(search_url["url"])
-                        responseA = requests.patch(f"{DATABASE_URLS[2]}/{search_url["id"]}.json", data=json.dumps(results))
+                        dataurl = DATABASE_URLS[2]
+                        dataid = search_url["id"]
+                        responseA = requests.patch(f"{dataurl}/{dataid}.json", data=json.dumps(results))
                         st.success("Congratulations! Item has been resolved!")
                 with col2:
                     st.write(f"Status:         {handle_Empty(results.get('status'))}")
