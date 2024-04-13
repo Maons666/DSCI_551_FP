@@ -238,7 +238,7 @@ def SearchPage():
             markurl = f"{DATABASE_URLS[2]}/{st.session_state.mark['data_id']}.json"
             responseA = requests.patch(markurl, data=json.dumps(st.session_state.mark["data"]))
             st.success("Congratulations! Item has been resolved!")
-            st.st.session_state.mark = {}
+            st.session_state.mark = {}
         else:
             st.write("Please search by ID first!")
 
