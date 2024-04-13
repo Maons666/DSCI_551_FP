@@ -239,7 +239,7 @@ def SearchPage():
             responseA = requests.patch(markurl, data=json.dumps(st.session_state.mark["data"]))
             st.success("Congratulations! Item has been resolved!")
         else:
-            st.write("marked")
+            st.write("Please search by ID first!")
 
 
 
