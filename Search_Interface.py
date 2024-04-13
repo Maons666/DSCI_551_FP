@@ -110,12 +110,16 @@ def SearchPage():
         for key, url in DATABASE_URLS.items():
             search_url["urls"].append(f"{url}{search_param}")
 
-# ---------------------------------------------------------------------
+# --------------------------------------------------------------------- #
     search_button = st.button('Search')
+    mark_button = st.button('Mark as resolved!')
 
     if search_button and filter_select == "ID":
         response = requests.get(search_url["url"])
         results = response.json()
+        st.session_state.mark["data"] = response.json()
+        st.session_state.mark["data_id"] = search_url["id"]
+        st.session_state.mark["dataurl"] = search_url["url"]
         st.markdown("---")
         if results:
             with st.container():
@@ -128,16 +132,26 @@ def SearchPage():
                     image_bytes = base64.b64decode(base64_string)
                     image_data = BytesIO(image_bytes)
                     st.image(image_data)
-                    if st.button("Mark as resolved!"):
-                        st.write(results)
-                        results["completed"] = True
-                        responseD = requests.delete(search_url["url"])
-                        dataurl = DATABASE_URLS[2]
-                        dataid = search_url["id"]
-                        st.write(results)
-                        st.write(f"{dataurl}/{dataid}.json")
-                        responseA = requests.patch(f"{dataurl}/{dataid}.json", data=json.dumps(results))
-                        st.success("Congratulations! Item has been resolved!")
+
+                    # if 'search_results' not in st.session_state:
+                    #     st.session_state.search_results = results  # Initialize if not already
+
+                    # if 'search_results' in st.session_state and st.session_state.search_results is not None:
+                    #     if st.button("Mark as resolved!"):
+                    #         st.write("Button pressed")  # Debug statement
+                    #         st.session_state.search_results["completed"] = True
+                    # if st.button("Mark as resolved!"):
+                    #     results["completed"] = True
+                    #     responseD = requests.delete(search_url["url"])
+                    #     dataurl = DATABASE_URLS[2]
+                    #     dataid = search_url["id"]
+                    #     st.write(results)
+                    #     st.write(f"{dataurl}/{dataid}.json")
+                    #     responseA = requests.patch(f"{dataurl}/{dataid}.json", data=json.dumps(st.session_state.search_results))
+                    #     st.success("Congratulations! Item has been resolved!")
+
+
+
                 with col2:
                     st.write(f"Status:         {handle_Empty(results.get('status'))}")
                     st.write(f"Type:           {handle_Empty(results.get('item_type'))}")
@@ -217,7 +231,15 @@ def SearchPage():
                             st.write(f"Phone:          {handle_Empty(result.get('phone'))}")
                             st.write(f"Description: {handle_Empty(result.get('description'))}")
                         st.markdown("---")
-
+    if mark_button:
+        if st.session_state.mark:
+            st.session_state.mark["data"]["completed"] = True
+            responseD = requests.delete(st.session_state.mark["dataurl"])
+            markurl = f"{DATABASE_URLS[2]}/{st.session_state.mark['data_id']}.json"
+            responseA = requests.patch(markurl, data=json.dumps(st.session_state.mark["data"]))
+            st.success("Congratulations! Item has been resolved!")
+        else:
+            st.write("marked")
 
 
 

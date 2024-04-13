@@ -8,6 +8,8 @@ st.subheader("Do you want to submit lost & found information or search for recor
 
 if 'page' not in st.session_state:
     st.session_state.page = None  # Initialize page state
+if 'mark' not in st.session_state:
+    st.session_state.mark = {}
 
 col1, col2 = st.columns(2)
 
