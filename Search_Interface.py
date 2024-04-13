@@ -232,7 +232,7 @@ def SearchPage():
                             st.write(f"Description: {handle_Empty(result.get('description'))}")
                         st.markdown("---")
     if mark_button:
-        if st.session_state.mark:
+        if not st.session_state.mark == {}:
             st.session_state.mark["data"]["completed"] = True
             responseD = requests.delete(st.session_state.mark["dataurl"])
             markurl = f"{DATABASE_URLS[2]}/{st.session_state.mark['data_id']}.json"
