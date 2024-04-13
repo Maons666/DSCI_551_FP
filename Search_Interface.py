@@ -117,11 +117,11 @@ def SearchPage():
     if search_button and filter_select == "ID":
         response = requests.get(search_url["url"])
         results = response.json()
-        st.session_state.mark["data"] = response.json()
-        st.session_state.mark["data_id"] = search_url["id"]
-        st.session_state.mark["dataurl"] = search_url["url"]
         st.markdown("---")
         if results:
+            st.session_state.mark["data"] = response.json()
+            st.session_state.mark["data_id"] = search_url["id"]
+            st.session_state.mark["dataurl"] = search_url["url"]
             with st.container():
                 col1, col2 = st.columns([1, 2])
                 if results["image"] == "":
@@ -132,26 +132,6 @@ def SearchPage():
                     image_bytes = base64.b64decode(base64_string)
                     image_data = BytesIO(image_bytes)
                     st.image(image_data)
-
-                    # if 'search_results' not in st.session_state:
-                    #     st.session_state.search_results = results  # Initialize if not already
-
-                    # if 'search_results' in st.session_state and st.session_state.search_results is not None:
-                    #     if st.button("Mark as resolved!"):
-                    #         st.write("Button pressed")  # Debug statement
-                    #         st.session_state.search_results["completed"] = True
-                    # if st.button("Mark as resolved!"):
-                    #     results["completed"] = True
-                    #     responseD = requests.delete(search_url["url"])
-                    #     dataurl = DATABASE_URLS[2]
-                    #     dataid = search_url["id"]
-                    #     st.write(results)
-                    #     st.write(f"{dataurl}/{dataid}.json")
-                    #     responseA = requests.patch(f"{dataurl}/{dataid}.json", data=json.dumps(st.session_state.search_results))
-                    #     st.success("Congratulations! Item has been resolved!")
-
-
-
                 with col2:
                     st.write(f"Status:         {handle_Empty(results.get('status'))}")
                     st.write(f"Type:           {handle_Empty(results.get('item_type'))}")
