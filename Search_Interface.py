@@ -137,7 +137,7 @@ def SearchPage():
                     st.write(f"Type:           {handle_Empty(results.get('item_type'))}")
                     st.write(f"Color:          {handle_Empty(results.get('color'))}")
                     if results["date"]:
-                        date_from_stamp = datetime.fromtimestamp(results["date"]).strftime('%Y-%m-%d %H:%M:%S')
+                        date_from_stamp = datetime.fromtimestamp(results["date"]).strftime('%Y-%m-%d')
                     else:
                         date_from_stamp = "N/A"
                     st.write(f"Date submitted：{date_from_stamp}")
@@ -170,7 +170,7 @@ def SearchPage():
                         st.write(f"Type:           {handle_Empty(result.get('item_type'))}")
                         st.write(f"Color:          {handle_Empty(result.get('color'))}")
                         if result["date"]:
-                            date_from_stamp = datetime.fromtimestamp(result["date"]).strftime('%Y-%m-%d %H:%M:%S')
+                            date_from_stamp = datetime.fromtimestamp(result["date"]).strftime('%Y-%m-%d')
                         else:
                             date_from_stamp = "N/A"
                         st.write(f"Date submitted：{date_from_stamp}")
@@ -203,7 +203,7 @@ def SearchPage():
                             st.write(f"Type:           {handle_Empty(result.get('item_type'))}")
                             st.write(f"Color:          {handle_Empty(result.get('color'))}")
                             if result["date"]:
-                                date_from_stamp = datetime.fromtimestamp(result["date"]).strftime('%Y-%m-%d %H:%M:%S')
+                                date_from_stamp = datetime.fromtimestamp(result["date"]).strftime('%Y-%m-%d')
                             else:
                                 date_from_stamp = "N/A"
                             st.write(f"Date submitted：{date_from_stamp}")
