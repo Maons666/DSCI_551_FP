@@ -1,4 +1,6 @@
 import streamlit as st
+import sys
+sys.path.append('./Scripts')
 import Submit_Interface
 import Search_Interface
 
