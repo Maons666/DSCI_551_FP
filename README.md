@@ -2,13 +2,16 @@
 
 ## Team 12: Xinyu Wang, Kiani Sheppard, Binkai Hu
 
-
-## This Respository contains 2 main running files for this project:
+## This respository contains 2 main running files for this project
 
  - A file to run the user interface `App_Interface.py`
- - A file that supports the back end functions of the database `Manager_Interface.py`
+ - A file that supports the back end functions of the database `Manager_Interface.ipynb`
 
-## How to Run the web app
+## View the web app online
+
+We have already deployed the app to streamlit share. So, go to [This link](https://dsci551lnf.streamlit.app/) to view the app online.
+
+## How to run the web app on local host
 
 1. Clone the repo to local directory
 2. Open a terminal
@@ -19,7 +22,7 @@
 streamlit run App_Interface.py
 ```
 
-## Repository Structure
+## Repository structure
 
  - The file that starts the interface is `App_Interface.py`
  - The Manager tool interface is `Manager_Interface.py` 
